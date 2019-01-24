@@ -3,13 +3,16 @@
 #include <jni.h>
 #include "JNIExample.h"
 
-JNIEXPORT void JNICALL Java_JNIExample_sayHello(JNIEnv *env, jobject object, jint len)
+JNIEXPORT int JNICALL Java_JNIExample_randGenerator(JNIEnv *env, jobject object, jint cnt)
 {
   printf("\nC Area ----------\n");
-  while (len > 0)
+  int sum=0;
+  while (cnt > 0)
   {
     int n = rand() % 100 + 1; // 1~100 random number
     printf("Generate new Random Number! ===> %d \n", n);
-    len--;
+    sum += n;
+    cnt--;
   }
+  return sum;
 }
