@@ -37,11 +37,21 @@ javah -jni JNIExample
 gcc -I"$JAVA_HOME/include" -I"$JAVA_HOME/include/darwin/" -o libjniexample.jnilib -shared JNIExample.c
 ```
 
+- I 옵션: 전처리 과정에서 헤더 파일을 탐색할 기본 디렉토리 추가
+  - JAVA_HOME/include 와 darwin 가보면 jni 관련한 헤더 존재함
+- o 옵션: 실행파일 명 변경 시
+- shard 옵션: 공유 library와 정적 library 가 같이 있을 경우 공유 라이브러리를 우선하여 link한다.
+
+
 ### 4. 실행
 `java.library.path` 를 현재 디렉토리(.)로 설정하고 실행해야 함
 ```
 java -Djava.library.path=. JNIExample
 ```
+- D 옵션: system의 property 값을 설정함
+  - -D(perperty name)=(value)
+- java.library.path: Native library 의 Path를 지정해주는 것
+- 3 에서 컴파일 한 파일의 위치 즉, 여기서는 현재 디렉토리(.) 사용 
 ## 실행화면
 
 ![screen shot 2019-01-23 at 22 40 41](https://user-images.githubusercontent.com/15089420/51612811-909ee080-1f65-11e9-9aa7-553aff02a4ec.png)
@@ -56,3 +66,6 @@ java -Djava.library.path=. JNIExample
 
 [Why am I getting this UnsatisfiedLinkError with native code?](https://stackoverflow.com/questions/761639/why-am-i-getting-this-unsatisfiedlinkerror-with-native-code)
 
+[java.library.path](https://m.blog.naver.com/PostView.nhn?blogId=yaki80&logNo=20164861232&proxyReferer=https%3A%2F%2Fwww.google.com%2F)
+
+[gcc 컴파일 옵션 정리](https://jangpd007.tistory.com/220)

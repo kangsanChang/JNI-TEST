@@ -3,3 +3,4 @@
 *.jnilib
 *.so
 *.dll
+.DS_Store
