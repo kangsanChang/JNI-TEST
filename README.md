@@ -54,7 +54,7 @@ java -Djava.library.path=. JNIExample
 - 3 에서 컴파일 한 파일의 위치 즉, 여기서는 현재 디렉토리(.) 사용 
 ## 실행화면
 
-![screen shot 2019-01-23 at 22 40 41](https://user-images.githubusercontent.com/15089420/51612811-909ee080-1f65-11e9-9aa7-553aff02a4ec.png)
+![screen shot 2019-01-24 at 11 49 47](https://user-images.githubusercontent.com/15089420/51651255-9086fb00-1fce-11e9-92bf-fdabc185df5a.png)
 
 ## 참고
 
