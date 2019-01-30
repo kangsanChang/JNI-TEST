@@ -1,10 +1,12 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 class JNIExample {
 
   // Native method, no body.
   public native int randGenerator(int count);
   public native String strTest(String evcc, String secc);
+  public native byte[] byteArrTest(String evcc, String secc);
 
   public static void main (String args[]) {
     Scanner sc = new Scanner(System.in);
@@ -21,6 +23,8 @@ class JNIExample {
     String secc = sc.next();
     String receivedmsg = jniex.strTest(evcc, secc);
     System.out.println("The returned message from C function is "+receivedmsg);
+    byte[] byteArr = jniex.byteArrTest(evcc, secc);
+    System.out.println("The returned byteArr from C function is "+Arrays.toString(byteArr));
   }
 
   // This loads the library at runtime. NOTICE: on *nix/Mac the extension of the
