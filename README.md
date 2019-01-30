@@ -56,7 +56,25 @@ java -Djava.library.path=. JNIExample
 
 ![screen shot 2019-01-24 at 11 49 47](https://user-images.githubusercontent.com/15089420/51651255-9086fb00-1fce-11e9-92bf-fdabc185df5a.png)
 
+## 추가
+
+### String 보내기
+- JNI는 Java의 `String` 을 표현하기 위해 `jstring` 을 정의 해 놓았음.
+- 그래서 java -> C 로 param 보낼 때 C에서는 `jstring` 타입으로 변수 받으면 됨
+- Primitive 와 다르게, Java 의 String 은 object 이고, C의 String은 Null 로 끝나는 char 배열임
+- 결론은, jstring으로 표현되는 Java의 String 과 C-String 사이의 convert가 필요
+
+- JNI 환경이 제공하는 conversion
+  1. C-String 을 JNI string 으로 부터 가져오기
+    - `const char* GetStringUTFChars(JNIEnv*, jstring, jboolean*)`
+  2. JNI string 을 C-String 으로 부터 가져오기
+    - `jstring NewStringUTF(JNIEnv*, char*)`
+
+- 총 3스텝이 있고, 예제 코드 참고
+
 ## 참고
+
+[String 주고받기(4.2  Passing Strings 참고)](https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html)
 
 [JNI Example (Mac OS)](https://gist.github.com/DmitrySoshnikov/8b1599a5197b5469c8cc07025f600fdb)
 
